@@ -1,7 +1,4 @@
-⚠ **This project is unmaintained**. Due to the rapid decay of the JavaScript
-ecosystem, this project was too difficult for me to maintain. As of today,
-*Dashkiosk* relies mostly on unmaintained library versions that may not build on
-modern systems.
+🔄 **This project has been modernized**. The dependencies and build system have been updated to work with modern Node.js versions (18+). While the original maintainer discontinued this project, it has been brought up to date with current tooling and security patches.
 
 # Dashkiosk
 
@@ -39,9 +36,44 @@ Here is a demonstration video:
 
 # Development
 
+## Requirements
+
+- Node.js 18.0.0 or higher
+- npm 9.0.0 or higher
+
+## Setup
+
+Install dependencies:
+
+    $ npm install
+
+Build the project:
+
+    $ npm run postinstall
+    # or directly:
+    $ grunt dist
+
 To run the server for development:
 
     $ grunt serve
+
+## Recent Updates
+
+This project has been updated with:
+
+- **Node.js 22** support (minimum Node.js 18+)
+- **Updated dependencies**: Express 4.21+, Socket.IO 4.8+, Winston 3.17+, Sequelize 6.37+
+- **Modern build tools**: Updated Grunt configuration with latest plugins
+- **Security patches**: Resolved critical vulnerabilities
+- **GitHub Actions**: Updated CI/CD to test on Node.js 18, 20, and 22
+- **Docker**: Updated to Node.js 22 with latest Debian base image
+
+## Known Issues
+
+Some tests may fail due to Sequelize v6 API changes. The core functionality builds and runs, but some legacy test patterns need updates for:
+- Lodash v4 compatibility (`_.pluck` → `_.map`)
+- Sequelize v6 API changes (`find` → `findOne`, `spread` → destructuring)
+- Migration API updates
 
 # Android receiver
 
@@ -81,4 +113,4 @@ To start without Chromecast support, simply run:
                  ghcr.io/vincentbernat/dashkiosk:latest
 
 Using `latest` can be broken from time to time. You may prefer a
-stable tag, like `2.7.9` or `2.7`.
+stable tag, like `2.8.0` or `2.8`.

@@ -28,7 +28,8 @@ describe('Sequelize migration', function() {
     db.sequelize
       .getQueryInterface()
       .dropAllTables()
-      .complete(function() { done(); }, function(err) { done(err); });
+      .then(function() { done(); })
+      .catch(function(err) { done(err); });
   });
 
   it('should execute without any error', function(done) {
@@ -39,8 +40,8 @@ describe('Sequelize migration', function() {
         logging: function() {}
       })
       .migrate()
-      .complete(function() { done(); },
-                function(err) { done(err); });
+      .then(function() { done(); })
+      .catch(function(err) { done(err); });
   });
 
   it('should give the same result as sync', function(done) {
