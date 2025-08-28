@@ -3,8 +3,9 @@
 var setup = require('../../.');
 
 var should = require('should'),
-    ioserver = require('socket.io').listen(5000, {
-      'log level': 0
+    { Server } = require('socket.io'),
+    ioserver = new Server(5000, {
+      serveClient: false
     }), // I hate that
     ioclient = require('socket.io-client'),
     _ = require('lodash'),

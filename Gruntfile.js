@@ -160,6 +160,9 @@ module.exports = function(grunt) {
     // Transform less files
     less: {
       build: {
+        options: {
+          math: 'always'
+        },
         files: [{
           expand: true,
           cwd: 'app/styles',
